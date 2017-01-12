@@ -6,17 +6,35 @@ const fizzBuzzer = require('../fizzBuzzer');
 describe('fizzBuzzer', function() {
 
   // test the normal case
-  it('remainder should be 0', function() {
-    const normalCases = [
-      {num: 30, expected: 'fizz-buzz'},
-      {num: 18, expected: 'fizz'},
-      {num: 40, expected: 'buzz'},
-      {num: 4, expected: 4},
-      {num: 'a', expected: '`num` must be a number'}
-    ];
+  it('should get fizz on divisible by 3', function() {
+    const normalCases = [12, 24, 33];
     normalCases.forEach(function(input) {
-      const answer = fizzBuzzer(input.num);
-      answer.should.equal(input.expected);
+      const answer = fizzBuzzer(input);
+      answer.should.equal('fizz');
+    });
+  });
+
+  it('should get buzz on divisible by 5', function() {
+    const normalCases = [25, 70, 155];
+    normalCases.forEach(function(input) {
+      const answer = fizzBuzzer(input);
+      answer.should.equal('buzz');
+    });
+  });
+
+  it('should get fizzbuzz on divisible by 15', function () {
+    const normalCases = [30, 60, 120];
+    normalCases.forEach(function(input) {
+      const answer = fizzBuzzer(input);
+      answer.should.equal('fizz-buzz');
+    });
+  });
+
+ it('should return the number not divisible by 15, 5 or 3', function () {
+    const normalCases = [4, 16, 89];
+    normalCases.forEach(function(input) {
+      const answer = fizzBuzzer(input);
+      answer.should.equal(input);
     });
   });
 
